@@ -1,0 +1,188 @@
+/* --- CSS VARIABLES (The Theme Engine) --- */
+:root {
+    --primary-color: #4f46e5;      
+    --primary-hover: #4338ca;
+    --bg-color: #f3f4f6;           
+    --surface-color: #ffffff;      
+    --text-main: #111827;
+    --text-muted: #6b7280;
+    --border-color: #e5e7eb;
+    --success: #10b981;
+    --error: #ef4444;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --radius: 12px;
+}
+
+body { 
+    font-family: 'Inter', sans-serif; 
+    background-color: var(--bg-color); 
+    color: var(--text-main);
+    margin: 0; 
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- MODERN NAVBAR --- */
+.navbar {
+    background-color: var(--surface-color);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+    box-shadow: var(--shadow-sm);
+    padding: 0 20px;
+}
+.navbar button {
+    background-color: transparent;
+    color: var(--text-muted);
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    padding: 20px 32px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+.navbar button:hover {
+    color: var(--primary-color);
+}
+.navbar button.active {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
+}
+
+/* --- LAYOUT & CONTAINERS --- */
+.tab-content {
+    display: none; 
+    max-width: 900px;
+    margin: 40px auto;
+    animation: fadeIn 0.4s ease-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.header-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.header-section h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.025em;
+}
+.header-section p {
+    color: var(--text-muted);
+    font-size: 16px;
+}
+
+/* --- UPLOAD CARDS --- */
+.upload-container { 
+    display: flex; 
+    justify-content: center; 
+    gap: 24px; 
+    margin-bottom: 32px; 
+}
+.upload-box { 
+    background: var(--surface-color);
+    padding: 32px; 
+    border: 2px dashed #cbd5e1; 
+    border-radius: var(--radius); 
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+.upload-box:hover {
+    border-color: var(--primary-color);
+    background-color: #f8fafc;
+}
+.upload-box h3 {
+    margin-top: 0;
+    font-size: 16px;
+    color: var(--text-main);
+}
+input[type="file"] {
+    font-size: 14px;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+/* --- BUTTONS & RESULTS --- */
+.btn-primary { 
+    background-color: var(--primary-color); 
+    color: white; 
+    border: none; 
+    border-radius: 8px; 
+    padding: 14px 28px; 
+    font-size: 16px; 
+    font-weight: 600;
+    cursor: pointer; 
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
+    display: block;
+    margin: 0 auto;
+}
+.btn-primary:hover { 
+    background-color: var(--primary-hover); 
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+.result-card {
+    margin-top: 32px;
+    padding: 24px;
+    border-radius: var(--radius);
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    display: none; 
+    box-shadow: var(--shadow-md);
+}
+.match-success { background-color: #ecfdf5; color: var(--success); border: 1px solid #a7f3d0; }
+.match-fail { background-color: #fef2f2; color: var(--error); border: 1px solid #fecaca; }
+
+/* --- DASHBOARD STYLES --- */
+.dashboard-container { 
+    display: flex; 
+    justify-content: center; 
+    gap: 24px;
+    margin-top: 20px;
+}
+#plot { 
+    width: 100%; 
+    max-width: 700px;
+    height: 550px; 
+    background: var(--surface-color); 
+    border-radius: var(--radius); 
+    box-shadow: var(--shadow-lg); 
+    padding: 10px;
+}
+.hover-preview { 
+    background: var(--surface-color); 
+    border-radius: var(--radius); 
+    box-shadow: var(--shadow-lg); 
+    width: 220px; 
+    height: 280px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 20px;
+}
+#hover-image { 
+    width: 140px; 
+    height: 140px; 
+    display: none; 
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+}
+#hover-label { 
+    margin-top: 16px; 
+    font-weight: 600; 
+    font-size: 18px; 
+    color: var(--text-main);
+}

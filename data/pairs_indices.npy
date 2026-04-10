@@ -1,0 +1,15 @@
+# Create an index mapping array for pairs (each pair has two image indices)
+# Assuming pairs_test is numpy array of shape (num_pairs, 2, img_shape)
+# We map each pair to indices from x_test by checking equality
+
+indices_map = []  # List of tuple of indices (index_a, index_b)
+
+for pair in pairs_test:
+    # Find indices of two pair images in x_test by np.where and store
+    idx_a = np.where((x_test == pair[0]).all(axis=(1,2,3)))[0][0]
+    idx_b = np.where((x_test == pair[1]).all(axis=(1,2,3)))[0][0]
+    indices_map.append((idx_a, idx_b))
+
+indices_map = np.array(indices_map)
+
+np.save('pairs_indices.npy', indices_map)

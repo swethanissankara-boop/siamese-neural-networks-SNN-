@@ -1,0 +1,5 @@
+# distances predicted by your trained siamese model on test pairs
+distances = siamese_model.predict([pairs_test[:, 0], pairs_test[:, 1]])
+
+# Save distances array
+np.save('distances.npy', distances)

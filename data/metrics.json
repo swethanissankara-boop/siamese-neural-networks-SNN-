@@ -1,0 +1,19 @@
+import json
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
+
+# Threshold for prediction
+threshold = 0.5
+predictions = (distances < threshold).astype(int)
+
+# Calculate metrics
+metrics = {
+    'threshold': threshold,
+    'accuracy': accuracy_score(labels_test, predictions),
+    'precision': precision_score(labels_test, predictions),
+    'recall': recall_score(labels_test, predictions),
+    'f1_score': f1_score(labels_test, predictions),
+    'roc_auc': roc_auc_score(labels_test, 1 - distances)  # invert distances for ROC
+}
+
+with open('metrics.json', 'w') as f:
+    json.dump(metrics, f)

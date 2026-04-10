@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Similarity AI</title>
+    
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <button class="tab-link active" onclick="openTab(event, 'TesterView')">Similarity Tester</button>
+        <button class="tab-link" onclick="openTab(event, 'DashboardView')">Knowledge Map</button>
+    </div>
+
+    <div id="TesterView" class="tab-content" style="display: block;">
+        <div class="header-section">
+            <h1>Fashion Similarity AI</h1>
+            <p>Upload two items to calculate their visual distance using the Siamese Network.</p>
+        </div>
+
+        <div class="upload-container">
+            <div class="upload-box">
+                <h3>Reference Item</h3>
+                <input type="file" id="image1" accept="image/*">
+            </div>
+            <div class="upload-box">
+                <h3>Comparison Item</h3>
+                <input type="file" id="image2" accept="image/*">
+            </div>
+        </div>
+        <button class="btn-primary" onclick="compareImages()">Calculate Similarity</button>
+        
+        <div id="result" class="result-card"></div>
+    </div>
+
+    <div id="DashboardView" class="tab-content" style="max-width: 1000px;">
+        <div class="header-section">
+            <h1>Model Embeddings (t-SNE)</h1>
+            <p>Interactive visualization of how the neural network clusters distinct fashion categories.</p>
+        </div>
+        
+        <div class="dashboard-container">
+            <div id="plot"></div>
+            <div class="hover-preview">
+                <p id="hover-hint" style="color: var(--text-muted); font-size: 14px;">Hover over a data point</p>
+                <img id="hover-image" src="" alt="Item Preview">
+                <div id="hover-label"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

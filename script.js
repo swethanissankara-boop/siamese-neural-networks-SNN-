@@ -37,7 +37,7 @@ async function compareImages() {
     formData.append("image2", file2);
 
     try {
-        const response = await fetch("http://127.0.0.1:8000/compare", { method: "POST", body: formData });
+        const response = await fetch("/compare", { method: "POST", body: formData });
         const data = await response.json();
         
         if(data.is_match) {
@@ -55,7 +55,7 @@ async function compareImages() {
 // --- DASHBOARD LOGIC ---
 async function loadDashboard() {
     try {
-        const response = await fetch("http://127.0.0.1:8000/dashboard-data");
+        const response = await fetch("/dashboard-data");
         const data = await response.json();
 
         const trace = {

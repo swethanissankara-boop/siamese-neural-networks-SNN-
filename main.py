@@ -1,11 +1,14 @@
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from tensorflow.keras import layers, models
 import tensorflow as tf
 from PIL import Image, ImageOps
 import numpy as np
 import io
 import json
+import os
 
 # 1. Initialize the app
 app = FastAPI()
@@ -98,3 +101,12 @@ async def get_dashboard_data():
         "labels": text_labels,
         "images": images
     }
+
+# --- SERVE STATIC FILES (HTML, CSS, JS) ---
+@app.get("/")
+async def serve_index():
+    return FileResponse("index.html", media_type="text/html")
+
+# Mount static files for CSS, JS, etc.
+if os.path.isdir("static"):
+    app.mount("/static", StaticFiles(directory="static"), name="static")
